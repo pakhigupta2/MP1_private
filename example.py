@@ -8,7 +8,8 @@ def tokens_lowercase(doc):
     tok = metapy.analyzers.LowercaseFilter(tok)
     tok = metapy.analyzers.LengthFilter(tok, min=2, max=5)
     tok = metapy.analyzers.Porter2Filter(tok)
-    trigrams = metapy.analyzers.NGramWordAnalyzer(3, tok)
+    ana = metapy.analyzers.NGramWordAnalyzer(3, tok)
+    trigrams = ana.analyze(doc)
     
     #leave the rest of the code as is
     tok.set_content(doc.content())
